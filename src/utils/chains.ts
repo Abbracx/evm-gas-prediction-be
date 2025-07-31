@@ -1,4 +1,11 @@
 import { Chain } from '../types/index.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+/* chains.ts - Configuration for supported EVM chains
+   This file defines the supported chains and their API endpoints.
+*/
 
 export const SUPPORTED_CHAINS: Record<string, Chain> = {
   ethereum: {

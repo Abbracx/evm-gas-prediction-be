@@ -43,6 +43,7 @@ const startCronJobs = (): void => {
   cron.schedule('*/5 * * * *', async () => {
     console.log('Fetching current gas prices...');
     for (const chainId of Object.keys(SUPPORTED_CHAINS)) {
+      console.log(`Fetching gas prices for ${chainId}...`);
       await gasService.fetchCurrentGasPrice(chainId);
     }
   });

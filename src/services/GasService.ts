@@ -9,8 +9,24 @@ import { GasPrice, TransactionEstimate } from '../types/index.js';
    estimate transaction costs, and manage historical gas data.
 */
 export class GasService {
+  private lastCallTime = 0;
+  private readonly minInterval = 200; // 200ms = 5 calls per second
+
+
+  private async rateLimit(): Promise<void> {
+    const now = Date.now();
+    const timeSinceLastCall = now - this.lastCallTime;
+    
+    if (timeSinceLastCall < this.minInterval) {
+      await new Promise(resolve => setTimeout(resolve, this.minInterval - timeSinceLastCall));
+    }
+    
+    this.lastCallTime = Date.now();
+  }
 
   async fetchCurrentGasPrice(chainId: string): Promise<GasPrice | null> {
+    await this.rateLimit();
+    
     const chain = SUPPORTED_CHAINS[chainId];
     if (!chain || !chain.apiKey) return null;
 
