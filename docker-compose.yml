@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: evm-gas-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: evm-gas-prediction
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - evm-gas-network
+
+  app:
+    build: .
+    container_name: evm-gas-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/evm-gas-prediction
+    depends_on:
+      - mongodb
+    networks:
+      - evm-gas-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  evm-gas-network:
+    driver: bridge
