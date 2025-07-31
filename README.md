@@ -40,7 +40,7 @@ cp .env.example .env
 3. **Edit `.env` file with your API keys:**
 ```env
 PORT=3001
-MONGODB_URI=mongodb://localhost:27017/evm-gas-prediction
+MONGODB_URI=mongodb://0.0.0.0:27017/evm-gas-prediction
 ETHERSCAN_API_KEY=your_actual_etherscan_api_key
 POLYGONSCAN_API_KEY=your_actual_polygonscan_api_key
 BSCSCAN_API_KEY=your_actual_bscscan_api_key
