@@ -53,6 +53,12 @@ const startCronJobs = (): void => {
     console.log('Aggregating historical data...');
     await gasService.aggregateHistoricalData();
   });
+
+  // Aggregate historical data every 10 minutes
+  // cron.schedule('0 0 * * * *', async () => {
+  //   console.log('Aggregating historical data...');
+  //   await gasService.aggregateHistoricalData();
+  // });
 };
 
 const startServer = async (): Promise<void> => {

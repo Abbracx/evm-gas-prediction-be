@@ -13,6 +13,17 @@ A TypeScript-based backend service for predicting and tracking gas prices across
 - **TypeScript & ES modules** for type safety and modern development
 - **RESTful API** with comprehensive endpoints
 
+## 🖥️ Frontend Application
+
+**React Frontend Repository**: [evm-gas-prediction-fe](https://github.com/Abbracx/evm-gas-prediction-fe)
+
+A modern React TypeScript frontend with:
+- **Real-time gas price dashboard**
+- **Interactive historical charts** 
+- **Transaction cost calculator**
+- **Multi-chain support**
+- **Responsive design** with Tailwind CSS
+
 ## 📋 Prerequisites
 
 - Node.js 18+ 
